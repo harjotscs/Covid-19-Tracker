@@ -21,10 +21,10 @@
 	</thead>
 	<tbody>
 		<tr>
-            <td>{{activeCases}}{{infected}}</td>
-			<td>{{recovered}}</td>
+            <td id='infected'>{{activeCases}}{{infected}}</td>
+			<td id="recovered">{{recovered}}</td>
 			<td>{{deaths}}{{deceased}}</td>
-			<td>{{totalCases}}{{total}}</td>
+			<td id="total" >{{totalCases}}{{total}}</td>
 			<td><a href="{{sourceUrl}}">URL</a></td>
 			<td>{{lastUpdated}} Minutes ago </td>
 		</tr>
@@ -41,10 +41,19 @@
 		</tr>
 	</thead>
 	<tbody>
-		{{#each regionData}}
+		{{#each regionData }}
 		<tr>
             <td>{{region}}</td>
 			<td>{{totalInfected}}</td>
+			<td>{{recovered}}</td>
+			<td>{{deceased}}</td>
+			
+		</tr>
+		{{/each}}
+		{{#each infectedByRegion }}
+		<tr>
+            <td>{{name}}{{state}}</td>
+			<td>{{value}}{{count}}</td>
 			<td>{{recovered}}</td>
 			<td>{{deceased}}</td>
 			

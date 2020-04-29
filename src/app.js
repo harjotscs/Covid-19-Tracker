@@ -58,15 +58,27 @@ app.get('/moreData/:country',async(req,res)=>{
         await run();
         const link=await moredetails(req.params.country)
         const moreData=await getJSON(link)
-        const {activeCases,recovered,deaths,totalCases,sourceUrl,lastUpdatedAtApify,infected,deceased,regionData}=moreData
-        total=recovered+infected+deceased
+        var {activeCases,recovered,deaths,totalCases,sourceUrl,lastUpdatedAtApify,infected,deceased,infectedByRegion,regionData}=moreData
         const lastUpdated=await conversion(lastUpdatedAtApify)
+        if(!infectedByRegion)
+        infectedByRegion=""
+        if(!totalCases)
+        {
+            if(recovered==='N/A'||deceased==='N/A'||infected==='N/A')
+            total='Can\'t Compute'
+            else
+            total=parseInt(recovered)+parseInt(deceased)+parseInt(infected)
+        }
+        
+        else
+        total=""
         res.render('details',{ 
         title:`COVID Statistics Of ${req.params.country}`,
         activeCases,recovered,deaths,totalCases,sourceUrl,lastUpdated,infected,deceased,
         regionData,
         name,
-        total
+        total,
+        infectedByRegion
     })
     }catch(e){
         console.log(e)
