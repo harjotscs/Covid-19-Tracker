@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID Tracker</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    {{>header}}
+<table class="container" style="padding: 2px;" >
+	<thead>
+		<tr>
+			<th><h1>Active Cases</h1></th>
+            <th><h1>Recovered Cases</h1></th>
+			<th><h1>Deaths</h1></th>
+			<th><h1>Total Cases</h1></th>
+			<th><h1>Source Url</h1></th>
+			<th><h1>Updated At</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+            <td>{{activeCases}}</td>
+			<td>{{recovered}}</td>
+			<td>{{deaths}}</td>
+			<td>{{totalCases}}</td>
+			<td><a href="{{sourceUrl}}">URL</a></td>
+			<td>{{lastUpdated}} Minutes ago </td>
+		</tr>
+	</tbody>
+</table>
+<table class="container">
+	<h1>Region Wise Statistics</h1>
+	<thead>
+		<tr>
+			<th><h1>Region</h1></th>
+            <th><h1>Total Infected</h1></th>
+			<th><h1>Recovered</h1></th>
+			<th><h1>Deaths</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each regionData}}
+		<tr>
+            <td>{{region}}</td>
+			<td>{{totalInfected}}</td>
+			<td>{{recovered}}</td>
+			<td>{{deceased}}</td>
+			
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+    {{>footer}}
+</body>
+</html>

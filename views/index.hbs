@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID Tracker</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    {{>header}}
+    <center><b>Click On Country Name To Know About Last Update Time, Detailed View Of Affected Regions Of Country, Source, etc </b></center>
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Country</h1></th>
+            <th><h1>Tests Performed</h1></th>
+			<th><h1>Active Cases</h1></th>
+			<th><h1>Deaths</h1></th>
+			<th><h1>Recovered</h1></th>
+            <th><h1>Total Cases</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+        {{#each data}}
+		<tr>
+			<td><a href="/moreData/{{country}}">{{country}}</a></td>
+            <td>{{tested}}</td>
+			<td>{{infected}}</td>
+			<td>{{deceased}}</td>
+			<td>{{recovered}}</td>
+            <td>{{total}}</td>
+
+		</tr>
+        {{/each}}
+
+	</tbody>
+</table>
+    {{>footer}}
+</body>
+</html>
